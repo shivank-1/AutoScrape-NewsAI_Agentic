@@ -13,15 +13,15 @@ class AiNews():
 	tasks_config = 'config/tasks.yaml'
 
 	@agent
-	def retrieve_news(self) -> Agent:
+	def retrieve_news(self) -> Agent:                    ##this agent will do google search and retrieve news websites
 		return Agent(
 			config=self.agents_config['retrieve_news'],
-			tools=[SerperDevTool()],
+			tools=[SerperDevTool()],                      ## the Search Engine Results Page Development Tool
 			verbose=True
 		)
 
 	@agent
-	def website_scraper(self) -> Agent:
+	def website_scraper(self) -> Agent:                  ##this will extract data from the websites
 		return Agent(
 			config=self.agents_config['website_scraper'],
 			tools=[ScrapeWebsiteTool()],
@@ -31,7 +31,7 @@ class AiNews():
 	@agent
 	def ai_news_writer(self) -> Agent:
 		return Agent(
-			config=self.agents_config['ai_news_writer'],
+			config=self.agents_config['ai_news_writer'],         ##will write a concise summary of the collected data from each website
 			tools=[],
 			verbose=True
 		)
@@ -39,7 +39,7 @@ class AiNews():
 	@agent
 	def file_writer(self) -> Agent:
 		return Agent(
-			config=self.agents_config['file_writer'],
+			config=self.agents_config['file_writer'],        ##writes collected content in a file the content will contain a heading and a summary form each of the 10 website that it will scrape
 			tools=[FileWriterTool()],
 			verbose=True
 		)
@@ -68,13 +68,12 @@ class AiNews():
 			config=self.tasks_config['file_write_task'],
 		)
 
-	@crew
-	def crew(self) -> Crew:
+	@crew                            ##registers def(crew) funtion as a special crew function 
+	def crew(self) -> Crew:           
 		"""Creates the AiNews crew"""
-		return Crew(
-			agents=self.agents, # Automatically created by the @agent decorator
-			tasks=self.tasks, # Automatically created by the @task decorator
-			process=Process.sequential,
-			verbose=True,
-			# process=Process.hierarchical, # In case you wanna use that instead https://docs.crewai.com/how-to/Hierarchical/
+		return Crew(                 ###these are argument assignment not a function call
+			agents=self.agents, # Automatically looks for every function with @agent decorator on it and will know that,that function is going to be an agent and therefore it will return the function as an agent 
+			tasks=self.tasks, # Automatically looks for every function with @task decorator
+			process=Process.sequential,    ##runs tasks one after the another
+			verbose=True,              ##to show execution details 
 		)
