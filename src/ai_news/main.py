@@ -16,7 +16,7 @@ def run():
     Run the crew.
     """
     inputs = {
-        'topic': 'openai',
+        'topic': 'openai agentic ai',
         'date': datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
     }
 
