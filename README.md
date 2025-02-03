@@ -1,16 +1,16 @@
-**AI News Bot with CrewAI Integration
+**AI News Bot with CrewAI Integration**
 
 This project automates news retrieval, web scraping, AI-generated news writing, and file saving using CrewAI.
 
-**Setup Instructions
+**Setup Instructions**
 
-**Step 1. Install Dependencies
+**Step 1. Install Dependencies**
 
 Ensure you have Python installed (version 3.10 recommended). Install dependencies using:
 
 pip install -r requirements.txt
 
-**Step 2. Set Up Configuration Files
+**Step 2. Set Up Configuration Files**
 
 Create and configure the following files:
 
@@ -18,14 +18,14 @@ config/agents.yaml - Defines agents for retrieving news, scraping websites, writ
 
 config/tasks.yaml - Specifies tasks assigned to each agent.
 
-**Step 3. Create a .env File
+**Step 3. Create a .env File**
 
 Create a .env file in the root directory and add the required API keys and credentials:
 
 SERPER_API_KEY="your_serper_api_key"
 GROQ_API_KEY="your_groq_api_key"
 
-**Step 4. Run the Bot
+**Step 4. Run the Bot**
 
 Execute the script to start the AI news automation:
 
